@@ -13,8 +13,8 @@
 // limitations under the License.
 
 // The controller is not available for versions of Unity without the
-// // GVR native integration.
-#if UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR)
+// GVR native integration.
+#if UNITY_HAS_GOOGLEVR && (UNITY_ANDROID || UNITY_EDITOR || UNITY_STANDALONE_WIN)
 
 using UnityEngine;
 using UnityEngine.VR;
@@ -36,6 +36,37 @@ public enum GvrConnectionState {
   Error,
 };
 
+// Represents the API status of the current controller state.
+// Values and semantics from gvr_types.h in the GVR C API.
+public enum GvrControllerApiStatus {
+  // A Unity-localized error occurred.
+  // This is the only value that isn't in gvr_types.h.
+  Error = -1,
+
+  // API is happy and healthy. This doesn't mean the controller itself
+  // is connected, it just means that the underlying service is working
+  // properly.
+  Ok = 0,
+
+  /// Any other status represents a permanent failure that requires
+  /// external action to fix:
+
+  /// API failed because this device does not support controllers (API is too
+  /// low, or other required feature not present).
+  Unsupported = 1,
+  /// This app was not authorized to use the service (e.g., missing permissions,
+  /// the app is blacklisted by the underlying service, etc).
+  NotAuthorized = 2,
+  /// The underlying VR service is not present.
+  Unavailable = 3,
+  /// The underlying VR service is too old, needs upgrade.
+  ApiServiceObsolete = 4,
+  /// The underlying VR service is too new, is incompatible with current client.
+  ApiClientObsolete = 5,
+  /// The underlying VR service is malfunctioning. Try again later.
+  ApiMalfunction = 6,
+};
+
 /// Main entry point for the Daydream controller API.
 ///
 /// To use this API, add this behavior to a GameObject in your scene, or use the
@@ -53,6 +84,10 @@ public class GvrController : MonoBehaviour {
   private IEnumerator controllerUpdate;
   private WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
 
+  /// Event handler for receiving button, track pad, and IMU updates from the controller.
+  public delegate void OnControllerUpdateEvent();
+  public event OnControllerUpdateEvent OnControllerUpdate;
+
   /// If true, enable gyroscope on the controller.
   [Tooltip("If enabled, the controller will report gyroscope readings.")]
   public bool enableGyro = false;
@@ -69,6 +104,13 @@ public class GvrController : MonoBehaviour {
   /// Indicates how we connect to the controller emulator.
   [Tooltip("How to connect to the emulator: USB cable (recommended) or WIFI.")]
   public EmulatorConnectionMode emulatorConnectionMode = EmulatorConnectionMode.USB;
+
+  /// Returns the singleton instance associated with the controller.
+  public static GvrController Instance {
+    get {
+      return instance;
+    }
+  }
 
   /// Returns the controller's current connection state.
   public static GvrConnectionState State {
@@ -237,6 +279,14 @@ public class GvrController : MonoBehaviour {
     if (controllerProvider == null) {
       controllerProvider = ControllerProviderFactory.CreateControllerProvider(this);
     }
+
+    // Keep screen on here, in case there isn't a GvrViewerMain prefab in the scene.
+    // This ensures the behaviour for:
+    //   (a) Cardboard apps on pre-integration Unity versions - they must have GvrViewerMain in a scene.
+    //   (b) Daydream apps - these must be on GVR-integrated Unity versions, and must have GvrControllerMain.
+    // Cardboard-only apps on the native integration are likely to have GvrViewerMain in their scene; otherwise,
+    // the line below can be added to any script of the developer's choice.
+    Screen.sleepTimeout = SleepTimeout.NeverSleep;
   }
 
   void OnDestroy() {
@@ -246,7 +296,7 @@ public class GvrController : MonoBehaviour {
   private void UpdateController() {
     controllerProvider.ReadState(controllerState);
 
-    // If the controller was recentered, also recenter the headset.
+    // If a headset recenter was requested, do it now.
     if (controllerState.recentered) {
  #if UNITY_EDITOR
       GvrViewer sdk = GvrViewer.Instance;
@@ -285,6 +335,7 @@ public class GvrController : MonoBehaviour {
       // it gets reset.
       yield return waitForEndOfFrame;
       UpdateController();
+      OnControllerUpdate();
     }
   }
 }
