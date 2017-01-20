@@ -132,7 +132,7 @@ ModelImporter:
     400122: UpperJaw
     400124: UpperJawEnd
     4300000: Critter01
-    7400000: Take 001
+    7400000: Idle01
     9500000: //RootNode
     13700000: Critter01
   materials:
@@ -155,7 +155,161 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle01
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Critter01
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/Hip
+        weight: 1
+      - path: group1/Hip/LeftBelly
+        weight: 1
+      - path: group1/Hip/LeftUpLeg
+        weight: 1
+      - path: group1/Hip/LeftUpLeg/LeftLeg
+        weight: 1
+      - path: group1/Hip/LeftUpLeg/LeftLeg/LeftLowerLeg
+        weight: 1
+      - path: group1/Hip/LeftUpLeg/LeftLeg/LeftLowerLeg/LeftAnkle
+        weight: 1
+      - path: group1/Hip/LeftUpLeg/LeftLeg/LeftLowerLeg/LeftAnkle/LeftFoot
+        weight: 1
+      - path: group1/Hip/LeftUpLeg/LeftLeg/LeftLowerLeg/LeftAnkle/LeftFoot/LeftToeBall
+        weight: 1
+      - path: group1/Hip/RightBelly
+        weight: 1
+      - path: group1/Hip/RightUpLeg
+        weight: 1
+      - path: group1/Hip/RightUpLeg/RightLeg
+        weight: 1
+      - path: group1/Hip/RightUpLeg/RightLeg/RightLowerLeg
+        weight: 1
+      - path: group1/Hip/RightUpLeg/RightLeg/RightLowerLeg/RightAnkle
+        weight: 1
+      - path: group1/Hip/RightUpLeg/RightLeg/RightLowerLeg/RightAnkle/RightFoot
+        weight: 1
+      - path: group1/Hip/RightUpLeg/RightLeg/RightLowerLeg/RightAnkle/RightFoot/RightToeBall
+        weight: 1
+      - path: group1/Hip/Spine01
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/LeftClavicle
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/LeftClavicle/LeftArm
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/LeftClavicle/LeftArm/LeftForeArm
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/LeftClavicle/LeftArm/LeftForeArm/LeftHand
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/LeftClavicle/LeftArm/LeftForeArm/LeftHand/LeftIndex01
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/LeftClavicle/LeftArm/LeftForeArm/LeftHand/LeftIndex01/LeftIndex02
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/LeftClavicle/LeftArm/LeftForeArm/LeftHand/LeftIndex01/LeftIndex02/LeftIndex03
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/LeftClavicle/LeftArm/LeftForeArm/LeftHand/LeftRing01
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/LeftClavicle/LeftArm/LeftForeArm/LeftHand/LeftRing01/LeftRing02
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/LeftClavicle/LeftArm/LeftForeArm/LeftHand/LeftRing01/LeftRing02/LeftRing03
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/joint21
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/joint21/Tounge01
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/joint21/Tounge01/Tounge02
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/joint21/Tounge01/Tounge02/Tounge03
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/joint21/Tounge01/Tounge02/Tounge03/Tounge04
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/joint21/Tounge01/Tounge02/Tounge03/Tounge04/Tounge05
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/joint21/Tounge01/Tounge02/Tounge03/Tounge04/Tounge05/Tounge06
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/LowerJaw
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/LowerJaw/LowerJawEnd
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/UpperJaw
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/UpperJaw/LeftEye
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/UpperJaw/LeftEyeLowerLid
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/UpperJaw/LeftEyeUpperLid
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/UpperJaw/RightEye
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/UpperJaw/RightEyeLowerLid
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/UpperJaw/RightEyeUpperLid
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/Neck/Head/UpperJaw/UpperJawEnd
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/RightClavicle
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/RightClavicle/RightArm
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/RightClavicle/RightArm/RightForeArm
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/RightClavicle/RightArm/RightForeArm/RightHand
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/RightClavicle/RightArm/RightForeArm/RightHand/RightIndex01
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/RightClavicle/RightArm/RightForeArm/RightHand/RightIndex01/RightIndex02
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/RightClavicle/RightArm/RightForeArm/RightHand/RightIndex01/RightIndex02/RightIndex03
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/RightClavicle/RightArm/RightForeArm/RightHand/RightRing01
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/RightClavicle/RightArm/RightForeArm/RightHand/RightRing01/RightRing02
+        weight: 1
+      - path: group1/Hip/Spine01/Spine02/RightClavicle/RightArm/RightForeArm/RightHand/RightRing01/RightRing02/RightRing03
+        weight: 1
+      - path: group1/Hip/Tail01
+        weight: 1
+      - path: group1/Hip/Tail01/Tail02
+        weight: 1
+      - path: group1/Hip/Tail01/Tail02/Tail03
+        weight: 1
+      - path: group1/Hip/Tail01/Tail02/Tail03/Tail04
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []
