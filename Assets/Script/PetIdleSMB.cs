@@ -1,17 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Experimental.Director;
 
-public class PetIdleSMB : MonoBehaviour {
+public class PetIdleSMB : StateMachineBehaviour {
 
-	void Awake() {
 
-	}
+    float checkInterval = 2f;
+    float currentTime;
 
-	void Start () {
 
-	}
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        base.OnStateEnter(animator, stateInfo, layerIndex);
+        currentTime = 0;
+    }
 
-	void Update () {
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        currentTime += Time.deltaTime;
+        
+        if(currentTime > checkInterval) {
+            currentTime = 0;
 
-	}
+            if(Random.Range(0,100) > 50) {
+                animator.SetTrigger("Mouth");
+            }
+
+
+
+        }
+
+
+    }
 }
